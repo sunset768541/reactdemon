@@ -1,54 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import axios from 'axios';
-import api from './api/api'
-
-function MvLists(props) {
-    const listItems = props.mvs.map((mv) =>
-        <li>
-            <div>
-                <span>{mv.name}</span><br/>
-                <img className="mvCover" src={mv.cover}/>
-            </div>
-        </li>
-    );
-    return (
-        <ul>{listItems}</ul>
-    );
-}
+import Nav from './components/TopNav/index'
+import GlobalStyle from "./style/Global";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            phone: "",
-            password: "",
-            topMv: []
-        }
+        // this.state = {
+        //     phone: "",
+        //     password: "",
+        //     topMv: []
+        // }
     }
 
 
     componentDidMount() {
-        axios.post(api.BASE_URI + api.topMv).then(
-            response => {
-                console.log(response.data);
-                this.setState({
-                    topMv: response.data.data
-                })
-            },
-            error => {
-                console.log(error);
-            }
-        )
+        // axios.post(api.BASE_URI + api.topMv).then(
+        //     response => {
+        //         console.log(response.data);
+        //         this.setState({
+        //             topMv: response.data.data
+        //         })
+        //     },
+        //     error => {
+        //         console.log(error);
+        //     }
+        // )
     }
-
 
 
     render() {
 
-        return <div>
-          <MvLists mvs = {this.state.topMv}/>
+        return <div  >
+            <Nav nvtitle={["发现音乐", "我的音乐", "朋友", "商城", "音乐人", "下载客户端"]}/>
         </div>
     }
 }
@@ -56,7 +40,9 @@ class App extends React.Component {
 // ========================================
 
 ReactDOM.render(
-    <App/>
-    ,
+    <div >
+        <GlobalStyle/>
+        <App/>
+    </div>,
     document.getElementById('root')
 );
