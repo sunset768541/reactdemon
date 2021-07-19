@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
+import { withRouter } from 'react-router-dom'
 
 const TopNav = styled.div`
   padding: 0 0;
@@ -45,25 +46,72 @@ const ItemWrap = styled.div`
   .choose {
     background-color: black;
   }
+
+  .Link {
+    color: white;
+  }
+
+  .a {
+    
+    text-decoration: none;
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none
+  }
+
 `
 
 class Nav extends React.Component {
-    constructor(props) {
+    constructor(props, context) {
         super(props);
         this.state = {
-            choose: 0
+            choose: 0,
+            to: "/findmusic"
         }
+        this.context = context
     }
 
     handleClick(index) {
         console.log("点击了" + index)
         this.setState({choose: index})
+        switch (index) {
+            case 0:
+                this.props.history.push('/findmusic');
+                break
+            case 1:
+                this.props.history.push('/mymusic');
+                break
+            case 2:
+                this.props.history.push('/friends');
+                break
+            case 3:
+                this.props.history.push('/market');
+                break
+            case 4:
+                this.props.history.push('/musicpeople');
+                break
+            case 5:
+                this.props.history.push('/download');
+                break
+            default:
+                this.props.history.push('/');
+                break
+        }
     }
 
 
     render() {
         const navItems = this.props.nvtitle.map((title, index) =>
-            <li onClick={() => this.handleClick(index)} className={this.state.choose === index ? "choose" : "unchoose"}>
+            <li onClick={() => this.handleClick(index)}
+                className={this.state.choose === index  ? "choose" : "unchoose"}>
          <span>
              <a>{title}</a>
           </span>
@@ -82,4 +130,4 @@ class Nav extends React.Component {
     }
 }
 
-export default Nav
+export default withRouter(Nav)
