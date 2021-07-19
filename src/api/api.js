@@ -3,6 +3,7 @@ export default {
     topMv: '/top/mv?limit=10',
     banner:'/banner?type=0',
     hot:'/playlist/hot',
+    recommondplaylist:'/personalized',
     //
     latestMv: '/mv/first?limit=10',
 };

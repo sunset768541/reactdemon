@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     padding: 0px;
     border: 0px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     min-width: 1280px;
   }
 
