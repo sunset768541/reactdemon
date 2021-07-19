@@ -12,15 +12,32 @@ const NavStyle = styled.div`
     margin: auto;
   }
   li{
-    padding-left: 180px;
+    margin-left: 180px;
     list-style: none;
     color: white;
     text-decoration-color: white;
   }
-  a{
-    color: white;
-  }
   
+  .choose{
+    color: white;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .15);
+  }
+  li:hover{
+    color: white;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .12);
+  }
+  a {
+    color: white;
+    padding: 0 13px;
+    display: inline-block;
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+  }
+
+
 `
 
 
