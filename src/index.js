@@ -6,7 +6,7 @@ import { Spin } from 'antd';
 import {lazy, Suspense} from 'react';
 import {BrowserRouter as Router,HashRouter, Route, Switch} from 'react-router-dom';
 import 'antd/dist/antd.css';
-
+import './index.css'
 
 const FindMusic = lazy(() => import('./pages/FindMusic'))
 const DownloadApp = lazy(() => import('./pages/DownloadApp'))

@@ -29,7 +29,7 @@ class Banner extends Component {
     componentDidMount() {
         axios.post(api.BASE_URI + api.banner).then(
             response => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.setState({
                     banner: response.data.banners
                 })
