@@ -5,6 +5,7 @@ import api from '../../api/api'
 import axios from 'axios'
 import Tab from "../../components/Tab";
 import Playlist from "../../components/PlayList/Playlist";
+import AblumRoller from "../../components/AbbumRoller/AblumRoller";
 
 class Recommond extends React.Component {
 
@@ -12,7 +13,8 @@ class Recommond extends React.Component {
         super(props);
         this.state = {
             hots: [],
-            playlist:[]
+            playlist: [],
+            topalbum: []
         }
 
     }
@@ -47,14 +49,43 @@ class Recommond extends React.Component {
                 console.log(error);
             }
         )
+        axios.post(api.BASE_URI + api.topalbum).then(
+            response => {
+                console.log(response.data);
+                const albumlist = []
+                if (response.data && response.data.weekData.length !== 0) {
+                    response.data.weekData.forEach((item) => {
+
+                        if (item.name.length <= 7) {
+                            albumlist.push({name: item.name, singer: item.artists[0].name, picUrl: item.picUrl});
+                        }
+                    })
+                }
+                this.setState({
+                    topalbum: albumlist
+                })
+            },
+            error => {
+                console.log(error);
+            }
+        )
     }
 
     render() {
-        return <div >
+        return <div>
             <Banner/>
-            <div  className={"content"} style={{"background-color":"white",width: "731px", margin: 'auto',"border-left":'1px solid #d3d3d3',"border-right":'1px solid #d3d3d3',"border-bottom":'1px solid #d3d3d3'}}>
-                <Tab style={{margin:'20px'}} title="热门推荐" tags={this.state.hots}/>
-                <Playlist  playlist={this.state.playlist} showNum={8}/>
+            <div className={"content"} style={{
+                "background-color": "white",
+                width: "731px",
+                margin: 'auto',
+                "border-left": '1px solid #d3d3d3',
+                "border-right": '1px solid #d3d3d3',
+                "border-bottom": '1px solid #d3d3d3'
+            }}>
+                <Tab style={{margin: '20px'}} title="热门推荐" tags={this.state.hots}/>
+                <Playlist playlist={this.state.playlist} showNum={8}/>
+                <Tab style={{margin: '20px'}} title="新碟上架" tags={[]}/>
+                <AblumRoller style={{margin: '20px'}} albumlist={this.state.topalbum}/>
             </div>
         </div>
     }

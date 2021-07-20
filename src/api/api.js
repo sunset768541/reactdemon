@@ -4,6 +4,7 @@ export default {
     banner:'/banner?type=0',
     hot:'/playlist/hot',
     recommondplaylist:'/personalized',
+    topalbum: '/top/album',
     //
     latestMv: '/mv/first?limit=10',
 };

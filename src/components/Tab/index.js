@@ -24,6 +24,8 @@ const DivStyle = styled.div`
 
   }
 `
+
+
 const RedHr=styled.hr`
   border-color: #b2000d;
 
