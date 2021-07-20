@@ -3,6 +3,19 @@ import styled from 'styled-components'
 import axios from "axios";
 import api from "../../api/api";
 
+
+const MusicItem = styled.li`
+  list-style: none;
+
+  p {
+    width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+`
+
+
 class RankItem extends React.Component {
 
     constructor(props) {
@@ -13,12 +26,12 @@ class RankItem extends React.Component {
     }
 
     componentDidMount() {
-        axios.post(api.BASE_URI + api.ranklistdetail +"?id="+ this.props.id).then(
+        axios.post(api.BASE_URI + api.ranklistdetail + "?id=" + this.props.id).then(
             response => {
                 console.log(response.data);
                 const names = []
                 if (response.data && response.data.playlist.length !== 0) {
-                    response.data.playlist.tracks.slice(0,10).forEach((item) =>
+                    response.data.playlist.tracks.slice(0, 10).forEach((item) =>
                         names.push(item.name)
                     )
                 }
@@ -33,9 +46,9 @@ class RankItem extends React.Component {
     }
 
     render() {
-        const list = this.state.tracks.map((item) => <li>
+        const list = this.state.tracks.map((item) => <MusicItem>
             <p>{item}</p>
-        </li>)
+        </MusicItem>)
         console.log(this.state.tracks)
         return <div>
             <ul>
