@@ -54,7 +54,7 @@ class Recommond extends React.Component {
             <Banner/>
             <div  className={"content"} style={{"background-color":"white",width: "731px", margin: 'auto',"border-left":'1px solid #d3d3d3',"border-right":'1px solid #d3d3d3',"border-bottom":'1px solid #d3d3d3'}}>
                 <Tab style={{margin:'20px'}} title="热门推荐" tags={this.state.hots}/>
-                <Playlist  playlist={this.state.playlist}/>
+                <Playlist  playlist={this.state.playlist} showNum={8}/>
             </div>
         </div>
     }
