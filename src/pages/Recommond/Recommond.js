@@ -6,6 +6,7 @@ import axios from 'axios'
 import Tab from "../../components/Tab";
 import Playlist from "../../components/PlayList/Playlist";
 import AblumRoller from "../../components/AbbumRoller/AblumRoller";
+import Rank from "../../components/Rank/Rank";
 
 class Recommond extends React.Component {
 
@@ -14,7 +15,8 @@ class Recommond extends React.Component {
         this.state = {
             hots: [],
             playlist: [],
-            topalbum: []
+            topalbum: [],
+            ranklist: [],
         }
 
     }
@@ -69,6 +71,22 @@ class Recommond extends React.Component {
                 console.log(error);
             }
         )
+
+        axios.post(api.BASE_URI + api.ranklis).then(
+            response => {
+                console.log(response.data);
+                const albumlist = []
+                if (response.data && response.data.list.length !== 0) {
+                    this.setState({ranklist: response.data.list.slice(0, 3)})
+                }
+                this.setState({
+                    topalbum: albumlist
+                })
+            },
+            error => {
+                console.log(error);
+            }
+        )
     }
 
     render() {
@@ -86,6 +104,8 @@ class Recommond extends React.Component {
                 <Playlist playlist={this.state.playlist} showNum={8}/>
                 <Tab style={{margin: '20px'}} title="新碟上架" tags={[]}/>
                 <AblumRoller style={{margin: '20px'}} albumlist={this.state.topalbum}/>
+                <Tab style={{margin: '20px'}} title="榜单" tags={[]}/>
+                <Rank style={{margin: '20px'}} list={this.state.ranklist}/>
             </div>
         </div>
     }

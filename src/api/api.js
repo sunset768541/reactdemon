@@ -5,6 +5,7 @@ export default {
     hot:'/playlist/hot',
     recommondplaylist:'/personalized',
     topalbum: '/top/album',
-    //
+    ranklis:'/toplist',
+    ranklistdetail:'/playlist/detail',
     latestMv: '/mv/first?limit=10',
 };
