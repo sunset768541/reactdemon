@@ -96,6 +96,7 @@ class Recommond extends React.Component {
                 "background-color": "white",
                 width: "731px",
                 margin: 'auto',
+                "padding-bottom":"40px",
                 "border-left": '1px solid #d3d3d3',
                 "border-right": '1px solid #d3d3d3',
                 "border-bottom": '1px solid #d3d3d3'

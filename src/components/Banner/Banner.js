@@ -12,9 +12,23 @@ const contentStyle = {
 };
 const CarouselStyle = styled.div`
   .ant-carousel .slick-slide {
+ 
   }
+
+
 `
 
+const BannerDiv=styled.div`
+  .slick-dots .slick-dots-bottom{
+    margin-bottom: 10px;
+  }
+  .slick-dots .slick-dots-bottom li button{
+      height: 0px;
+    
+  }
+
+
+`
 
 class Banner extends Component {
 
@@ -41,9 +55,12 @@ class Banner extends Component {
     }
 
     render() {
-        const banner = this.state.banner.map((data) => <div>
-            <h3  style={{background:'url('+data.imageUrl + '?imageView&blur=40x20'+')'}}><img style={contentStyle} src={data.imageUrl} alt="logo"/></h3>
-        </div>)
+        const banner = this.state.banner.map((data) => <BannerDiv>
+            <h3 style={{background: 'url(' + data.imageUrl + '?imageView&blur=40x20' + ')'}}>
+                <img style={contentStyle}
+                     src={data.imageUrl}
+                     alt="logo"/></h3>
+        </BannerDiv>)
 
         return (
             <CarouselStyle>
