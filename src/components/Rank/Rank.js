@@ -4,6 +4,14 @@ import RankItem from "./RankItem";
 
 const RankStyle = styled.div`
   display: flex;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  border: 1px solid #cecece;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+`
+const RankContainer = styled.div`
 
 `
 
