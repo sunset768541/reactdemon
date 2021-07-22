@@ -6,6 +6,7 @@ export default {
     recommondplaylist:'/personalized',
     topalbum: '/top/album',
     ranklis:'/toplist',
+    logincell:'/login/cellphone',
     ranklistdetail:'/playlist/detail',
     latestMv: '/mv/first?limit=10',
 };
