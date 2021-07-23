@@ -18,18 +18,10 @@ const getPlayList = (posts, url) => {
 const mapStateToProps = state => {
     console.log("mapStateToProps"+state.url+" ")
     console.log(state)
-    if (state.postsByUrl.items !== undefined) {
-        if (state.postsByUrl.url === api.playlistcategory) {
-            return {
-                //palycategory是传递给显示组件的
-                playcategory: getPlayList(state.postsByUrl.items, state.postsByUrl.url)//state.visibilityFilter是reducer   state.todos是reducer
-            }
-        }
-        if (state.postsByUrl.url === api.hotplaylist) {
-            return {
-                //palycategory是传递给显示组件的
-                hotPlaylist: getPlayList(state.postsByUrl.items, state.postsByUrl.url)//state.visibilityFilter是reducer   state.todos是reducer
-            }
+    if (state.postsByUrl.url !== undefined) {
+        return {
+            playcategory:state.postsByUrl.sub,
+            hotPlaylist:state.postsByUrl.playlists
         }
     } else {
         return state

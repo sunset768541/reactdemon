@@ -43,7 +43,6 @@ class PlayListCategory extends React.Component {
             hotItem = this.props.hotPlaylist.map((item) => <div>{item.name}</div>);
         } else {
             hotItem = <div>
-
             </div>
         }
         return <div>
