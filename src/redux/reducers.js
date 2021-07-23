@@ -1,8 +1,5 @@
 import {combineReducers} from 'redux'
-import {
-    REQUEST_POSTS,
-    RECEIVE_POSTS, REQ_PLAYLIST
-} from './actions'
+import {RECEIVE_POSTS, REQ_PLAYLIST, REQUEST_POSTS} from './actions'
 
 //不要修改 state。 使用 Object.assign() 新建了一个副本。不能这样使用 Object.assign(state, { visibilityFilter: action.filter })，因为它会改变第一个参数的值。你必须把第一个参数设置为空对象。你也可以开启对 ES7 提案对象展开运算符的支持, 从而使用 { ...state, ...newState } 达到相同的目的。
 //
@@ -28,7 +25,7 @@ function posts(
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                items: action.posts.sub,
+                items: action.posts,
                 url: action.url,
                 lastUpdated: action.receivedAt
             })
@@ -41,13 +38,9 @@ function posts(
 function postsByUrl(state = {}, action) {
     switch (action.type) {
         case RECEIVE_POSTS:
-            const value = Object.assign({}, state, posts(state, action))//合并数据到一个target中，如果有相同的数据则覆盖数据
-            console.log("postsByUrl and Action")
-            console.log(value)
-            console.log(action)
-            return value//返回数据给容器组件
+            //合并数据到一个target中，如果有相同的数据则覆盖数据
+            return Object.assign({}, state, posts(state, action))//返回数据给容器组件
         case REQUEST_POSTS:
-            console.log("开始请求")
             return state;
         default:
             return state

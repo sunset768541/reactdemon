@@ -10,4 +10,5 @@ export default {
     ranklistdetail:'/playlist/detail',
     playlistcategory:'/playlist/catlist',
     latestMv: '/mv/first?limit=10',
+    hotplaylist:'/top/playlist?limit=35&order=hot'
 };

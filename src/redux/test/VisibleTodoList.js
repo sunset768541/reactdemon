@@ -66,6 +66,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 //生成容器组件 connect //最后，使用 connect() 创建 VisibleTodoList，并传入这两个函数。
+//有map函数，先将dispatch和state传入到map函数处理，没有map的话则直接将state和dispatch传给显示组件
 const VisibleTodoList = connect(
     mapStateToProps,//传递给展示组件
     mapDispatchToProps//传递给展示组件

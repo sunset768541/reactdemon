@@ -14,7 +14,6 @@ function requestPosts(url) {
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
 function receivePosts(url, json) {
-    console.log("接收到网路请求:" + url + " 数据为" + json.sub[0].name)
     return {
         type: RECEIVE_POSTS,
         url: url,

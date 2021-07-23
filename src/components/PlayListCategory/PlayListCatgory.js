@@ -4,8 +4,23 @@ import {Select} from 'antd';
 import PropTypes from 'prop-types'
 import TodoList from "../../redux/test/TodoList";
 
-const ContentDiv = styled.div`
+const HeaderContentDiv = styled.div`
   display: flex;
+
+  #title {
+    margin-top: 4px;
+    margin-right: 10px;
+  }
+
+  #selector {
+    padding-left: 10px;
+  }
+`
+
+const RedHr = styled.hr`
+  border-color: #b2000d;
+  padding: 0px;
+  margin-top: 5px;
 `
 const {Option} = Select;
 
@@ -14,27 +29,34 @@ class PlayListCategory extends React.Component {
         super(props);
     }
 
-    handleChange(value) {
-
-        console.log(`selected ${value}`);
-
-    }
 
     render() {
-        let items;
+        let categoryitems;
         if (this.props.playcategory !== undefined) {
-            console.log("哈哈哈")
-            items = this.props.playcategory.map((item) => <Option value={item.name}>{item.name}</Option>);
+            categoryitems = this.props.playcategory.map((item) => <Option value={item.name}>{item.name}</Option>);
         } else {
-            items = <Option>
+            categoryitems = <Option>
             </Option>
         }
-        return <ContentDiv>
-            <h3>全部</h3>
-            <Select defaultValue="全部" style={{width: 120}} onChange={this.props.onCategoryClick}>
-                {items}
-            </Select>
-        </ContentDiv>
+        let hotItem;
+        if (this.props.hotPlaylist !== undefined) {
+            hotItem = this.props.hotPlaylist.map((item) => <div>{item.name}</div>);
+        } else {
+            hotItem = <div>
+
+            </div>
+        }
+        return <div>
+            <HeaderContentDiv>
+                <h3 id={"title"}>全部</h3>
+                <Select id={"selector"} defaultValue="选择分类" style={{width: 120}} onChange={this.props.onCategoryClick}>
+                    {categoryitems}
+                </Select>
+            </HeaderContentDiv>
+
+            <RedHr/>
+            {hotItem}
+        </div>
     }
 }
 

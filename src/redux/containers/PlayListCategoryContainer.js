@@ -4,23 +4,37 @@ import PlayListCategory from "../../components/PlayListCategory/PlayListCatgory"
 import api from '../../api/api'
 
 const getPlayList = (posts, url) => {
-    console.log("getPlayList:"+url)
+    console.log("getPlayList:" + url)
     switch (url) {
         case api.playlistcategory:
             console.log("开始转换数据")
-            return posts
+            return posts.sub
+        case api.hotplaylist:
+            console.log("转换hot")
+            return posts.playlists
     }
 }
 //state是reducer中的reducer函数传给给的
 const mapStateToProps = state => {
-    console.log("state 为 ")
+    console.log("mapStateToProps"+state.url+" ")
     console.log(state)
-    console.log("mapStateToProps url=")
-    console.log(state.url)
-    return {
-        //palycategory是传递给显示组件的
-        playcategory: getPlayList(state.postsByUrl.items, state.postsByUrl.url)//state.visibilityFilter是reducer   state.todos是reducer
+    if (state.postsByUrl.items !== undefined) {
+        if (state.postsByUrl.url === api.playlistcategory) {
+            return {
+                //palycategory是传递给显示组件的
+                playcategory: getPlayList(state.postsByUrl.items, state.postsByUrl.url)//state.visibilityFilter是reducer   state.todos是reducer
+            }
+        }
+        if (state.postsByUrl.url === api.hotplaylist) {
+            return {
+                //palycategory是传递给显示组件的
+                hotPlaylist: getPlayList(state.postsByUrl.items, state.postsByUrl.url)//state.visibilityFilter是reducer   state.todos是reducer
+            }
+        }
+    } else {
+        return state
     }
+
 }
 const mapDispatchToProps = dispatch => {
     return {

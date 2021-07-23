@@ -9,7 +9,9 @@ const BodyDiv = styled.div`
   width: 900px;
   height: 1600px;
   padding: 40px;
-  border: 33px solid #D3D3D3;
+  border: 1px solid #D3D3D3;
+  margin: auto;
+  background: white;
 `
 
 class MusicList extends React.Component {
@@ -19,7 +21,7 @@ class MusicList extends React.Component {
     componentDidMount() {
         console.log("挂载歌单page")
         store.dispatch(fetchPosts(api.playlistcategory))
-
+        store.dispatch(fetchPosts(api.hotplaylist))
         // fetchPosts(api.playlistcategory)
     }
 

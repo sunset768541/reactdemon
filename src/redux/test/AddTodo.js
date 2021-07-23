@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from './actions'
 //有时很难分清到底该使用容器组件还是展示组件。例如，有时表单和函数严重耦合在一起，如这个小的组件：
+//没有map的话，直接把state和dispatch传入到显示组件
 let AddTodo = ({ dispatch }) => {
     let input
 
