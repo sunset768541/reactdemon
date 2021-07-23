@@ -14,9 +14,7 @@ const getPlayList = (posts, url) => {
 //state是reducer中的reducer函数传给给的
 const mapStateToProps = state => {
     console.log("state 为 ")
-
     console.log(state)
-
     console.log("mapStateToProps url=")
     console.log(state.url)
     return {
@@ -28,7 +26,7 @@ const mapDispatchToProps = dispatch => {
     return {
         //onCategoruClick也是传递给显示组件的的回调函数
         onCategoryClick: name => {
-            fetchPlayListPosts(name)//容器组件分发事件或者ADD_TODO
+            dispatch(fetchPlayListPosts(name))//容器组件分发事件或者ADD_TODO
         }
     }
 }

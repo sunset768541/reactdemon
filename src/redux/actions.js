@@ -2,7 +2,7 @@ import fetch from 'cross-fetch'
 import api from '../api/api'
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
-
+export const REQ_PLAYLIST = 'REQ_PLAYLIST'
 //subreddit是数据负载
 function requestPosts(url) {
     return {
@@ -25,7 +25,7 @@ function receivePosts(url, json) {
 
 
 export function fetchPlayListPosts(name) {
-    console.log("请求具体的分类:"+name)
+    return { type: REQ_PLAYLIST, name }
 }
 
 export function fetchPosts(url) {
