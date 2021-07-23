@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Nav from './components/TopNav/index'
 import GlobalStyle from "./style/Global";
-import { Spin } from 'antd';
+import {Spin} from 'antd';
 import {lazy, Suspense} from 'react';
-import {BrowserRouter as Router,HashRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, HashRouter, Route, Switch} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css'
+import store from './redux/store'
+import {Provider} from 'react-redux'
 
 const FindMusic = lazy(() => import('./pages/FindMusic'))
 const DownloadApp = lazy(() => import('./pages/DownloadApp'))
@@ -38,19 +40,19 @@ class App extends React.Component {
 
 
     render() {
-        return <Router >
+        return <Router>
             <div>
                 <div>
                     <Nav nvtitle={["发现音乐", "我的音乐", "朋友", "商城", "音乐人", "下载客户端"]} context={this.context}/>
                 </div>
-                <Suspense fallback={<Spin />}>
-                    <Switch >
-                        <Route  path="/findmusic" component={FindMusic}/>
-                        <Route  path="/download" component={DownloadApp}/>
-                        <Route  path="/friends" component={Friends}/>
-                        <Route  path="/market" component={Market}/>
-                        <Route  path="/musicpeople" component={MusicPeoples}/>
-                        <Route  path="/mymusic" component={MyMusic}/>
+                <Suspense fallback={<Spin/>}>
+                    <Switch>
+                        <Route path="/findmusic" component={FindMusic}/>
+                        <Route path="/download" component={DownloadApp}/>
+                        <Route path="/friends" component={Friends}/>
+                        <Route path="/market" component={Market}/>
+                        <Route path="/musicpeople" component={MusicPeoples}/>
+                        <Route path="/mymusic" component={MyMusic}/>
                     </Switch>
                 </Suspense>
             </div>
@@ -60,15 +62,15 @@ class App extends React.Component {
 
 // ========================================
 const rootStyle = {
-    height:"100%"
+    height: "100%"
 }
 ReactDOM.render(
-    <div style={rootStyle}>
-
+    <Provider store={store}>
+        <div style={rootStyle}>
             <GlobalStyle/>
             <App/>
-
-    </div>,
+        </div>
+    </Provider>,
     document.getElementById('root')
 );
 

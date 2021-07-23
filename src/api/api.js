@@ -8,5 +8,6 @@ export default {
     ranklis:'/toplist',
     logincell:'/login/cellphone',
     ranklistdetail:'/playlist/detail',
+    playlistcategory:'/playlist/catlist',
     latestMv: '/mv/first?limit=10',
 };
