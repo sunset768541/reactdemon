@@ -7,8 +7,7 @@ import store from '../../redux/store'
 
 const BodyDiv = styled.div`
   width: 900px;
-  height: 1600px;
-  padding: 40px;
+padding: 40px;
   border: 1px solid #D3D3D3;
   margin: auto;
   background: white;
